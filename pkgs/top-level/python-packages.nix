@@ -17501,6 +17501,8 @@ EOF
 
   ledgerblue = callPackage ../development/python-modules/ledgerblue { };
 
+  python-u2flib-host = callPackage ../development/python-modules/python-u2flib-host { };
+
   ecpy = callPackage ../development/python-modules/ecpy { };
 
   semver = callPackage ../development/python-modules/semver { };

@@ -1,19 +1,18 @@
-{ stdenv, fetchPypi, buildPythonPackage, hidapi
-, pycrypto, pillow, protobuf, future, ecpy, python-u2flib-host
-, requests
+{ stdenv, fetchPypi, buildPythonPackage, coverage, coveralls
+, cryptography, hidapi
 }:
 
 buildPythonPackage rec {
   name = "${pname}-${version}";
-  pname = "ledgerblue";
-  version = "0.1.17";
+  pname = "python-u2flib-host";
+  version = "3.0.3";
 
   src = fetchPypi {
     inherit pname version;
-    sha256 = "ac403b074337b9b58cae97ea00b3d94fc8efeea1717a80c49e79dc8aad6fc58f";
+    sha256 = "02pwafd5kyjpc310ys0pgnd0adff1laz18naxxwsfrllqafqnrxb";
   };
 
-  buildInputs = [ hidapi pycrypto pillow protobuf future ecpy python-u2flib-host requests ];
+  buildInputs = [ coverage coveralls cryptography hidapi ];
 
   doCheck = false;
 
