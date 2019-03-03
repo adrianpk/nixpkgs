@@ -3,15 +3,15 @@
 , pkgconfig, gtk3, glib, gobject-introspection, totem-pl-parser
 , wrapGAppsHook, itstool, libxml2, vala, gnome3, grilo, grilo-plugins
 , libpeas, adwaita-icon-theme, gnome-desktop, gsettings-desktop-schemas
-, gdk_pixbuf, tracker, nautilus }:
+, gdk_pixbuf, tracker, nautilus, xvfb_run }:
 
 stdenv.mkDerivation rec {
   name = "totem-${version}";
-  version = "3.30.0";
+  version = "3.31.92";
 
   src = fetchurl {
     url = "mirror://gnome/sources/totem/${stdenv.lib.versions.majorMinor version}/${name}.tar.xz";
-    sha256 = "0rahkybxbmxhlmrrgrzxny1xm7wycx7ib4blxp1i2l1q3i8s84b0";
+    sha256 = "191xasczm2sydj0i10a48i0ymq2hb7jhavvhcm6m0qpipd6hhi3p";
   };
 
   doCheck = true;
@@ -40,6 +40,13 @@ stdenv.mkDerivation rec {
     # https://github.com/mesonbuild/meson/issues/1994
     "-Denable-vala=no"
   ];
+
+  checkInputs = [ xvfb_run ];
+
+  checkPhase = ''
+    xvfb-run -s '-screen 0 800x600x24' \
+      ninja test
+  '';
 
   wrapPrefixVariables = [ "PYTHONPATH" ];
 
