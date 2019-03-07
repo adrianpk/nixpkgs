@@ -40,7 +40,7 @@ in stdenv.mkDerivation rec {
   patches = [
     (substituteAll {
       src = ./fix-paths.patch;
-      glib-dev = glib.dev;
+      glib_dev = glib.dev;
     })
   ];
 
