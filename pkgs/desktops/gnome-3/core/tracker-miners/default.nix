@@ -8,11 +8,11 @@ let
   pname = "tracker-miners";
 in stdenv.mkDerivation rec {
   name = "${pname}-${version}";
-  version = "2.2.0";
+  version = "2.2.1";
 
   src = fetchurl {
     url = "mirror://gnome/sources/${pname}/${stdenv.lib.versions.majorMinor version}/${name}.tar.xz";
-    sha256 = "00afmfv88pf6jvnwhq15d68kvh7l118pjzpvxmrjl8a9wpc56faa";
+    sha256 = "1xbjbd994jxhdan7227kzdnmiblfy0f1vnsws5l809ydgk58f0qr";
   };
 
   nativeBuildInputs = [
